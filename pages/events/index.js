@@ -22,7 +22,7 @@ function ListEvents({ events = [] }){
                                 <td>{event.slug}</td>
                                 <td>{event.title}</td>
                                 <td>
-                                    <Link href={`/events/${event.id}`} passHref>
+                                    <Link href={`/events/${event.slug}`} passHref>
                                         <button type="button" className="btn btn-primary">View</button>
                                     </Link>
                                 </td>

@@ -17,8 +17,20 @@ a {
 
 .footer {
   bottom: 0;
-  position: absolute;
+  position: fixed;
   background-color: gray;
   width: 100%;
   padding: 10px;
+}
+
+
+.customnavbar{
+  padding: 10px;
+  background: grey;
+}
+
+.customnavbar a{
+  padding-right: 10px;
+  color: #ffffff;
+  text-decoration: none;
 }
