@@ -1,0 +1,14 @@
+.articleHeader{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.subtitle{
+    display: flex;
+    justify-content: center;
+    color: #515151;
+}
+
+.spaceRight{
+    margin-right: 10px;
+}

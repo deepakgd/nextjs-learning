@@ -1,10 +1,9 @@
 import axios from "axios";
+import ArticleDetails from "@components/blog-details";
 
-function blog({ blog }){
+function blog({ article }){
     return (
-        <div>
-            Blog title
-        </div>
+        <ArticleDetails article={article} />
     );
 }
 
@@ -14,10 +13,12 @@ export default blog;
 export async function getStaticProps(context){
     try{
         const slug = context.params.slug;
-        let article = await axios.get(`${process.env.API_BASE_URL}/articles/${slug}`);
+        let { data: article } = await axios.get(`${process.env.API_BASE_URL}/articles/${slug}`);
+        if(article.image) article.image.url = `${process.env.API_BASE_URL}${article.image.url}`;
+        if(article.author.picture) article.author.picture.url = `${process.env.API_BASE_URL}${article.author.picture.url}`;
         return {
             props: {
-                article: article.data || null
+                article: article || null
             }
         }
     }catch(error){

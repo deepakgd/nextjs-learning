@@ -1,25 +1,18 @@
 import Link from "next/link";
+import styles from './styles.module.css';
 
-const Navbar = () => {
+export default function Navbar() {
   return (
-    <nav className="customnavbar">
+    <nav className={styles.customnavbar}>
       <Link href="/">
         <a>Home</a>
       </Link>
       <Link href="/about">
         <a>About</a>
       </Link>
-      <Link href="/events">
-        <a>Events</a>
-      </Link>
       <Link href="/blogs">
         <a>Blogs</a>
       </Link>
-      {/* <Link href="/ninjas/">
-        <a>Ninja Listing</a>
-      </Link> */}
     </nav>
   );
 };
-
-export default Navbar;
