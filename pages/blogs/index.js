@@ -23,9 +23,13 @@ export async function getStaticProps(){
 
         let response = await axios.get(`${process.env.API_BASE_URL}/articles`);
         console.log(response);
+        let articles = response.data || [];
+        articles.forEach((article, index)=>{
+            article.description = article.description.length < 100 ? article.description : (article.description.substr(0, 100) + "...");
+        })
         return {
             props: {
-                artilces: response.data,
+                artilces: articles,
                 baseUrl: process.env.API_BASE_URL
             }
         }

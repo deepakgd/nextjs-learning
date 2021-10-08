@@ -1,10 +1,21 @@
 .articleContainer{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
-.card {
+.customcard {
     margin-bottom: 15px;
-    width: "20rem"
+    width: 20rem;
+}
+
+.viewArticle{
+    position: absolute;
+    bottom: 10px;
+    left: 37%;
+}
+
+
+.customCardBody{
+    height: 230px;
 }
