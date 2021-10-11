@@ -10,7 +10,7 @@ export const getStaticProps = async () => {
     console.log(data)
 
     return {
-      props: { users: data },
+      props: { pages: data },
       revalidate: 5
     };
   } catch (error) {
@@ -18,20 +18,20 @@ export const getStaticProps = async () => {
   }
 };
 
-const Users = ({ users }) => {
+const pages = ({ pages }) => {
   return (
     <>
-      <h1>Users list</h1>
+      <h1>Pages list</h1>
       <table>
         <tr>
           <th>Title</th>
           <th>Slug</th>
         </tr>
-        {users.map((user) => {
+        {pages.map((page) => {
           return (
-            <tr key={user.id}>
-              <td>{user.title}</td>
-              <td>{user.slug}</td>
+            <tr key={page.id}>
+              <td>{page.title}</td>
+              <td>{page.slug}</td>
             </tr>
           );
         })}
@@ -40,4 +40,4 @@ const Users = ({ users }) => {
   );
 };
 
-export default Users;
+export default pages;
