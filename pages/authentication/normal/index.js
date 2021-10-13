@@ -1,3 +1,3 @@
 export default function normal(){
-    return <h2>Manual user login with email and password module. using React and Strapi CMS</h2>
+    return <h2>Register user and login with email and password using Strapi CMS backend</h2>
 }

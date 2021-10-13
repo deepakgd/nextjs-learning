@@ -12,16 +12,16 @@ const schema = yup.object().shape({
 });
 
 
-export default function NormalRegister() {
+export default function NormalRegister({ onSubmit, redirectToLogin }) {
   const { register, handleSubmit, formState:{ errors } } = useForm({
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = data => console.log(data);
+  const submitForm = data => onSubmit(data);
 
   return (
       <div className="container px-5 my-5">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(submitForm)}>
           <div className="mb-3">
             <label className="form-label" htmlFor="emailAddress">
               Email Address
@@ -80,13 +80,19 @@ export default function NormalRegister() {
               {errors.confirmPassword?.message}
             </div>
           </div>
-          <div className="d-grid">
+          <div className="">
             <button
-              className="btn btn-primary btn-lg"
+              className={["btn btn-primary btn-lg", styles.buttons].join(" ")}
               id="submitButton"
               type="submit"
             >
-              Submit
+              Register
+            </button>
+            <button
+              className="btn btn-success btn-lg"
+              onClick={redirectToLogin}
+            >
+              Login
             </button>
           </div>
         </form>
