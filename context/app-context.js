@@ -1,19 +1,27 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import to from 'await-to-js';
 import axios from "axios";
-import router from 'next/router'
+import router from 'next/router';
+import api from '@utils/api';
 
 
 const AppContext = React.createContext();
 
 export const AppContextProvider = props => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    isLoading: true
+  });
   const [token, setToken] = useState(null);
 
+  useEffect(async () => {
+    let [error, response] = await to(api.getProfile());
+    if(error) return setUser({ isLoading: false });
+    setUser({ ...response.data, isLoading: false });
+  }, [])
+
   const logout = async () => {
-    await axios.get('/api/logout');
-    setToken(null);
-    setUser(null);
+    setUser({ isLoading: false });
+    await api.logout();
     router.push("/");
   }
 

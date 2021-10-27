@@ -6,17 +6,17 @@ const apiUrl = '/strapi'
 // based on next.config.js  configuration request ht to backend
 
 module.exports = {
-  getProfile: (token) => {
-    return axios.get(`${apiUrl}/users/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
+  getProfile: () => {
+    return axios.get(`${apiUrl}/users/me`);
   },
-  login: (data) => {
-    return axios.post('/api/login', data);
+  login:  (data) => {
+    console.log("login")
+    return axios.post(`${apiUrl}/auth/local`, data);
   },
   register: (data) => {
-    return axios.post(`/api/register`, data);
+    return axios.post(`${apiUrl}/auth/local/register`, data);
+  },
+  logout: () => {
+    return axios.get(`${apiUrl}/auth/logout`);
   }
 }

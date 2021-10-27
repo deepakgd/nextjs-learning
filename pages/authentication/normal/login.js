@@ -9,7 +9,7 @@ import api from '@utils/api';
 
 export default function login() {
 
-  const { setUser, setToken } = useAppContext();
+  const { setUser } = useAppContext();
 
   const [errors, setErrors] = useState(null);
 
@@ -17,12 +17,11 @@ export default function login() {
     console.log(data);
     let [error, response] = await to(api.login(data));
     if(error) {
-      console.log(error.response?.data.message[0]?.messages);
+      console.log(error.response?.data.message);
       return setErrors(error.response.data?.message[0]?.messages);
     }
 
     setUser(response.data.user);
-    setToken(response.data.jwt);
 
     router.replace('/authentication/normal/profile');
   }

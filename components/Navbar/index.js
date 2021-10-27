@@ -17,19 +17,22 @@ export default function Navbar() {
       <Link href="/blogs">
         <a>Blogs</a>
       </Link>
-      { !user ? (
+      {!user.isLoading && (
         <>
-        <Link href="/authentication/normal/login">
-          <a>Login</a>
-        </Link>
-        <Link href="/authentication/normal/register">
-          <a>Register</a>
-        </Link>
+          { !user.email ? (
+            <>
+            <Link href="/authentication/normal/login">
+              <a>Login</a>
+            </Link>
+            <Link href="/authentication/normal/register">
+              <a>Register</a>
+            </Link>
+            </>
+          ): (
+              <a onClick={logout} href="#">Logout</a>
+          ) }
         </>
-      ): (
-          <a onClick={logout} href="#">Logout</a>
-      ) }
-
+      )}
     </nav>
   );
 };
